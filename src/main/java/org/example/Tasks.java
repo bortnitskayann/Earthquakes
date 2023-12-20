@@ -59,7 +59,7 @@ public class Tasks {
                 String magnitudeType = nextRecord[2];
                 MagnitudeType magnitude = null;
                 if (existingMagnitudeType.contains(magnitudeType)) {
-                    Query query = session.createQuery("from MagnitudeType where magnitudeType = :type", MagnitudeType.class);
+                    Query query = session.createQuery("FROM MagnitudeType WHERE magnitudeType = :type", MagnitudeType.class);
                     query.setParameter("type", magnitudeType);
                     List<MagnitudeType> existingMagnitudeList = query.getResultList();
                     if (!existingMagnitudeList.isEmpty()) {
@@ -92,8 +92,8 @@ public class Tasks {
         Session session = null;
         try {
             session = factory.openSession();
-            List<Object[]> results = session.createQuery("select YEAR(e.dateTime), COUNT(e.id) AS valueCount " +
-                            "from Earthquake e " +
+            List<Object[]> results = session.createQuery("SELECT YEAR(e.dateTime), COUNT(e.id) AS valueCount " +
+                            "FROM Earthquake e " +
                             "GROUP BY YEAR(e.dateTime)", Object[].class)
                     .getResultList();
             DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -126,9 +126,9 @@ public class Tasks {
         Session session = null;
         try {
             session = factory.openSession();
-            List<Double> result = session.createQuery("select ROUND(AVG(e.magnitude), 2) as avgMagnitude " +
-                            "from Earthquake e " +
-                            "where e.state = 'West Virginia'", Double.class)
+            List<Double> result = session.createQuery("SELECT ROUND(AVG(e.magnitude), 2) AS avgMagnitude " +
+                            "FROM Earthquake e " +
+                            "WHERE e.state = 'West Virginia'", Double.class)
                     .getResultList();
             if (!result.isEmpty()) {
                 System.out.println("Средняя магнитуда " + result.get(0));
@@ -147,9 +147,9 @@ public class Tasks {
         Session session = null;
         try {
             session = factory.openSession();
-            List<Object[]> result = session.createQuery("select e.state, MAX(e.depth) AS maxDepth " +
-                            "from Earthquake e " +
-                            "where YEAR(e.dateTime) = 2013 " +
+            List<Object[]> result = session.createQuery("SELECT e.state, MAX(e.depth) AS maxDepth " +
+                            "FROM Earthquake e " +
+                            "WHERE YEAR(e.dateTime) = 2013 " +
                             "GROUP BY e.state " +
                             "ORDER BY maxDepth DESC", Object[].class)
                     .getResultList();
