@@ -3,7 +3,7 @@
 ![Alt text](createProj.jpg?raw=true "Optional Title")
 
 Затем я подключила зависимости к проекту, а именно: ОРМ hibernate, СУБД MySQL, JFreeChart для построения графиков и OpenCSV для более удобной работы над csv-файлом.
-![Alt text](dependecies.jpg?raw=true "Optional Title")
+![Alt text](dependencies.jpg?raw=true "Optional Title")
 
 Третьим моим шагом было создание Базы Данных и таблиц в ней. БД я назвала earthquakes, а таблицы - earthquakes и magnitudeTypeId.
 ![Alt text](DB.png?raw=true "Optional Title")
