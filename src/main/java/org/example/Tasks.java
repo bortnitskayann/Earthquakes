@@ -10,9 +10,7 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.DefaultPieDataset;
 
 import javax.persistence.Query;
 import java.awt.*;
@@ -24,7 +22,7 @@ import java.util.*;
 import java.util.List;
 
 public class Tasks {
-    private Date convertDate(String str) {
+    private Date format(String str) {
         str = str.replace("T", " ");
         SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         Date date = null;
@@ -72,7 +70,7 @@ public class Tasks {
                     existingMagnitudeType.add(magnitudeType);
                 }
                 Earthquake earthquake = new Earthquake(nextRecord[0], Integer.parseInt(nextRecord[1]),
-                        magnitude, Float.parseFloat(nextRecord[3]), nextRecord[4], convertDate(nextRecord[5]));
+                        magnitude, Float.parseFloat(nextRecord[3]), nextRecord[4], format(nextRecord[5]));
                 session.save(magnitude);
                 session.save(earthquake);
             }
